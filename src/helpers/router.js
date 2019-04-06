@@ -1,4 +1,4 @@
-import * as ping from './ping'
+import * as ping from '../controllers/ping'
 
 
 export default class Router {

@@ -1,5 +1,5 @@
 import express from 'express'
-import Server from './controllers'
+import Server from './helpers/server'
 
 const main = () => {
     // Create app
@@ -16,5 +16,3 @@ const main = () => {
 
 // Run main function
 main()
-
-// TODO [2]: Create models

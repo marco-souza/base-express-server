@@ -1,7 +1,7 @@
 import Router from './router'
 
 
-export default class Controllers {
+export default class Server {
   constructor(app, { port, host }) {
     this._app = app
     this._host = host
