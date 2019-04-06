@@ -1,4 +1,4 @@
-import resolve from 'rollup-plugin-node-resolve'
+import babel from 'rollup-plugin-babel'
 import commonjs from 'rollup-plugin-commonjs'
 import json from 'rollup-plugin-json'
 import run from 'rollup-plugin-run'
@@ -13,11 +13,14 @@ export default {
     file: dev
       ? 'build/server.js'
       : undefined,
-    format: 'umd',
+    format: 'cjs',
   },
   plugins: [
+    babel({
+        presets: ["@babel/preset-env"],
+        exclude: "node_modules/**"
+    }),
     commonjs(),
-    resolve(),
     json(),
     dev && run(),
   ]
