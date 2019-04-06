@@ -1,4 +1,4 @@
-const express = require('express')
+import express from 'express'
 
 const main = () => {
     // Create app
@@ -20,3 +20,6 @@ const main = () => {
 
 // Run main function
 main()
+
+// TODO [1]: Create controllers
+// TODO [2]: Create models
