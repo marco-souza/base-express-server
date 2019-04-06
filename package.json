@@ -1,5 +1,12 @@
 {
+  "scripts": {
+    "start": "node ./src/main.js",
+    "start:dev": "nodemon ./src/* npm start"
+  },
   "dependencies": {
     "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10"
   }
 }
