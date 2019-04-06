@@ -1,5 +1,5 @@
-import babel from 'rollup-plugin-babel'
 import commonjs from 'rollup-plugin-commonjs'
+import babel from 'rollup-plugin-babel'
 import json from 'rollup-plugin-json'
 import run from 'rollup-plugin-run'
 
@@ -15,6 +15,12 @@ export default {
       : undefined,
     format: 'cjs',
   },
+  external: [
+    'path',
+    'express',
+    'swagger-jsdoc',
+    'swagger-ui-express',
+  ],
   plugins: [
     babel({
         presets: ["@babel/preset-env"],
