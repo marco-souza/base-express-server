@@ -1,0 +1,5 @@
+{
+    "server": {
+        "entry": "./src/main.js"
+    }
+}

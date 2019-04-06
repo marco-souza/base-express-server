@@ -1,12 +1,34 @@
 {
+  "name": "base-express-server",
+  "version": "0.1.0",
+  "author": "Marco Antônio <ma.souza.junior@gmail.com>",
+  "main": "./src/main.js",
   "scripts": {
-    "start": "node ./src/main.js",
-    "start:dev": "nodemon ./src/* npm start"
+    "start:dev": "nodemon yarn start",
+    "start:prod": "yarn build && ./build/server",
+    "build": "NODE_ENV=production rollup -c rollup.config.js | nexe -o build/server"
   },
   "dependencies": {
     "express": "^4.16.4"
   },
   "devDependencies": {
-    "nodemon": "^1.18.10"
+    "nexe": "^3.0.3",
+    "nodemon": "^1.18.10",
+    "rollup": "^1.9.0"
+  },
+  "nodemonConfig": {
+    "restartable": "r",
+    "ignore": [
+      ".git",
+      "node_modules/**/node_modules"
+    ],
+    "verbose": false,
+    "events": {
+      "restart": "osascript -e 'display notification \"App restarted due to:\n'$FILENAME'\" with title \"nodemon\"'"
+    },
+    "watch": [
+      "src/"
+    ],
+    "ext": "js,json"
   }
 }
