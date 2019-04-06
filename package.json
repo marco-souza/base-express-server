@@ -8,18 +8,14 @@
     "start": "yarn start:dev",
     "start:dev": "NODE_ENV=development nodemon --exec rollup -c rollup.config.js --silent",
     "start:prod": "nodemon --exec 'yarn build && ./build/server'",
-    "build": "NODE_ENV=production rollup -c rollup.config.js | nexe -o build/server",
+    "build": "NODE_ENV=production rollup -c rollup.config.js",
     "docker:build": "docker build -t $(basename $PWD) .",
     "docker:run": "docker run -it -p 3000:3000 $(basename $PWD):latest"
   },
   "dependencies": {
-    "@babel/core": "^7.4.3",
-    "@babel/preset-env": "^7.4.3",
     "express": "^4.16.4",
-    "nexe": "^3.0.3",
     "nodemon": "^1.18.10",
     "rollup": "^1.9.0",
-    "rollup-plugin-babel": "^4.3.2",
     "rollup-plugin-commonjs": "^9.3.4",
     "rollup-plugin-json": "^4.0.0",
     "rollup-plugin-node-resolve": "^4.2.0",
@@ -34,9 +30,6 @@
       "node_modules/**/node_modules"
     ],
     "verbose": false,
-    "events": {
-      "restart": "osascript -e 'display notification \"App restarted due to:\n'$FILENAME'\" with title \"nodemon\"'"
-    },
     "watch": [
       "src/*",
       "rollup.config.js"
