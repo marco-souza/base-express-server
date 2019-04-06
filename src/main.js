@@ -1,25 +1,20 @@
 import express from 'express'
+import Server from './controllers'
 
 const main = () => {
     // Create app
     const app = express()
+    const options = {
+      port: process.env.PORT || '3000',
+      host: process.env.HOST || '0.0.0.0',
+    }
+    const server = new Server(app, options)
 
-    // Create health-check route
-    app.get('/ping', (req, res) => {
-        res.json({ message: 'pong' })
-    })
-
-    // Start to listen
-    const port = process.env.PORT || '3000'
-    const host = process.env.HOST || '0.0.0.0'
-
-    app.listen(port, host, () => {
-        console.log(`Start to listening in http://${host}:${port}`)
-    })
+    // Start server
+    server.run()
 }
 
 // Run main function
 main()
 
-// TODO [1]: Create controllers
 // TODO [2]: Create models
