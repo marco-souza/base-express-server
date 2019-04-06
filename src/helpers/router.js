@@ -1,5 +1,6 @@
 import * as docs from '../controllers/docs'
 import * as ping from '../controllers/ping'
+import * as root from '../controllers/root'
 
 
 export default class Router {
@@ -9,6 +10,7 @@ export default class Router {
     this._routes = [
       docs,
       ping,
+      root,
     ]
   }
 
