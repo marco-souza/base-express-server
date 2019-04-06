@@ -4,7 +4,7 @@ import swaggerJSDoc from 'swagger-jsdoc'
 import swaggerUi from 'swagger-ui-express'
 
 
-const ENDPOINT = '/'
+const ENDPOINT = '/docs'
 
 export const router = express.Router()
 const SUIOptions = { explorer : true }
