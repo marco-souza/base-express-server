@@ -12,7 +12,6 @@ export default class Server {
     // define routers
     this._router = new Router(app)
     this._router.setupRoutes()
-    this._router.setupDoc()
   }
 
   run () {

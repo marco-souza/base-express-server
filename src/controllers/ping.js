@@ -1,6 +1,22 @@
-export const METHOD = 'get'
-export const PATH = '/ping'
+import express from 'express'
 
-export const controller = (req, res) => {
-  res.json({ message: 'pong' })
-}
+const ENDPOINT = '/ping'
+
+export const router = express.Router()
+
+// GET ping
+router.route(ENDPOINT)
+  /**
+   * @swagger
+   * /ping:
+   *   get:
+   *     tags:
+   *       - User
+   *     description: health check
+   *     produces:
+   *       - application/json
+   *     responses:
+   *       200:
+   *         message: pong
+   */
+  .get((req, res) => res.json({ message: 'pong' }))
