@@ -1,4 +1,4 @@
-import * as ping from './ping'
+import Router from './router'
 
 
 export default class Controllers {
@@ -9,14 +9,10 @@ export default class Controllers {
     this._startCallback = () => {
       console.log(`Server is listening in http://${this._host}:${this._port}`)
     }
-
-    // load routers
-    this._routers = [
-      ping,
-    ]
-    this._loadRoutes()
-    // make json to document all routers
-    this._loadDocRouter()
+    // define routers
+    this._router = new Router(app)
+    this._router.setupRoutes()
+    this._router.setupDoc()
   }
 
   run () {
@@ -27,19 +23,4 @@ export default class Controllers {
       this._startCallback,
     )
   }
-
-  _loadRoutes() {
-    this._routers
-      .map(router => this._app[router.METHOD](
-        router.PATH,
-        router.controller,
-      ))
-  }
-
-  _loadDocRouter() {
-    this._app.get('/', (req, res) =>
-      res.json(this._routers)
-    )
-  }
-
 }
