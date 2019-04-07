@@ -1,8 +1,8 @@
-import resolve from 'rollup-plugin-node-resolve'
 import commonjs from 'rollup-plugin-commonjs'
+import babel from 'rollup-plugin-babel'
 import json from 'rollup-plugin-json'
 import run from 'rollup-plugin-run'
-import paths from './filepaths.json'
+import paths from './filepaths.js'
 
 const dev = process.env.NODE_ENV !== 'production'
 
@@ -19,7 +19,7 @@ export default {
     'swagger-ui-express',
   ],
   plugins: [
-    resolve(),
+    babel(),
     commonjs(),
     json(),
     dev && run(),
