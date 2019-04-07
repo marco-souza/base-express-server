@@ -1,5 +1,5 @@
-# Stage 1
-FROM node:10.0-alpine as builder
+# Stage
+FROM node:10.0-alpine
 
 WORKDIR /app
 
@@ -13,12 +13,6 @@ ENV NODE_ENV=production
 RUN yarn install && \
     yarn build
 
-
-# Stage 2
-FROM gcr.io/distroless/cc
-
 EXPOSE 3000
 
-COPY --from=builder /app/build/server /
-
-ENTRYPOINT [ "/server" ]
+CMD [ "node", "/app/build/server" ]
