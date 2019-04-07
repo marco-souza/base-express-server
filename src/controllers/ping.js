@@ -12,11 +12,10 @@ router.route(ENDPOINT)
    *   get:
    *     tags:
    *       - User
-   *     description: health check
-   *     produces:
-   *       - application/json
+   *     description: Health check
    *     responses:
    *       200:
+   *         description: "Just respond pong `{ message: pong }`"
    *         message: pong
    */
   .get((req, res) => res.json({ message: 'pong' }))

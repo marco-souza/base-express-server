@@ -13,11 +13,9 @@ router.route(ENDPOINT)
    *     tags:
    *       - API
    *     description: Welcome
-   *     produces:
-   *       - application/json
    *     responses:
    *       200:
-   *         message: pong
+   *         description: Welcome text.
    */
   .get((req, res) => res.send(`
 Welcome, the server is running.
