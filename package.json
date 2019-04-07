@@ -6,15 +6,14 @@
   "license": "(ISC OR GPL-3.0)",
   "scripts": {
     "start": "yarn start:dev",
-    "start:dev": "NODE_ENV=development nodemon --exec rollup -c rollup.config.js --silent",
-    "start:prod": "nodemon --exec 'yarn build && ./build/server'",
+    "start:dev": "NODE_ENV=development npx nodemon --exec rollup -c rollup.config.js --silent",
+    "start:prod": "npx nodemon --exec 'yarn build && ./build/server'",
     "build": "NODE_ENV=production rollup -c rollup.config.js",
     "docker:build": "docker build -t $(basename $PWD) .",
     "docker:run": "docker run -it -p 3000:3000 $(basename $PWD):latest"
   },
   "dependencies": {
     "express": "^4.16.4",
-    "nodemon": "^1.18.10",
     "rollup": "^1.9.0",
     "rollup-plugin-commonjs": "^9.3.4",
     "rollup-plugin-json": "^4.0.0",
