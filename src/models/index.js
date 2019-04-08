@@ -1,15 +1,18 @@
 import { sequelize } from 'helpers/db'
 // import seeds
+import Tools from 'models/tools'
 import toolsSeeds from './tools/seeds'
 
 
 // Update models
-export default () => {
-  sequelize.sync()
+export default async (force) => {
+  await sequelize.sync({ force })
+  seed()
 }
 
 
 // Seed function
-export const seed = () => {
+export const seed = async () => {
+  console.log('create seeeds')
   toolsSeeds()
 }
