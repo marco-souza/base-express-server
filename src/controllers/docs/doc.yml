@@ -1,0 +1,9 @@
+/docs:
+  get:
+    tags:
+      - API
+    summary: Show API docs
+    description: Show API docs using Swagger UI
+    responses:
+      200:
+        description: Swagger iteractive UI
