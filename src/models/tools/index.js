@@ -20,14 +20,15 @@ export default {
     )
   },
 
-  list: (where = {}) => Tool.findAll({
-    where,
-    attributes: [ 'id', 'title', 'description', 'link' ],
-    include:[{
-      association: Tool.Tags,
-      attributes: [ 'name' ]
-    } ]
-  }),
+  list: (where = {}) =>
+    Tool.findAll({
+      where,
+      attributes: [ 'id', 'title', 'description', 'link' ],
+      include: [{
+        association: Tool.Tags,
+        attributes: [ 'name' ],
+      }]
+    }),
 
   update: () => {},
   delete: () => {},
