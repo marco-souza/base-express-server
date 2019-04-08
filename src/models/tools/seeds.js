@@ -2,7 +2,10 @@ import Tools from 'models/tools'
 
 
 // Seed db
-export default () => {
+export default async () => {
+  // Check if table is empty
+  if ((await Tools.list()).count()) return
+
   // Create some tools
   const listTools = [
     { title: 'NodeJS',
