@@ -1,19 +1,11 @@
-import * as root from '../controllers/root'
-import * as docs from '../controllers/docs'
-import * as ping from '../controllers/ping'
-import * as tools from '../controllers/tools'
+import routes from 'controllers'
 
 
 export default class Router {
   constructor(app) {
     this._app = app
     // get all routes
-    this._routes = [
-      root,
-      docs,
-      ping,
-      tools,
-    ]
+    this._routes = routes
   }
 
   setupRoutes() {
