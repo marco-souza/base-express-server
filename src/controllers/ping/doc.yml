@@ -1,0 +1,10 @@
+# @swagger
+/ping:
+  get:
+    tags:
+      - API
+    description: Health check endpoint
+    responses:
+      200:
+        description: "`{ data: result }`"
+        message: pong
