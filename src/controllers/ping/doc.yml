@@ -3,8 +3,8 @@
   get:
     tags:
       - API
+    summary: Helth check
     description: Health check endpoint
     responses:
       200:
         description: "`{ data: result }`"
-        message: pong
