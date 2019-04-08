@@ -10,3 +10,4 @@
     - [ ] aplicar middlewares em uma rota
     - [ ] custom 404
 - [x] criar **models**
+- [ ] add eslint
