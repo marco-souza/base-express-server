@@ -1,5 +1,5 @@
-# Stage
-FROM node:10.0-alpine
+# Stage 1
+FROM node:10.0-alpine as builder
 
 WORKDIR /app
 
@@ -9,11 +9,21 @@ COPY rollup.config.js /app/
 COPY filepaths.js /app/
 COPY .babelrc /app/
 
-ENV NODE_ENV=production
-
-RUN yarn install && \
+RUN yarn && \
     yarn build
 
+
+# Stage 2
+FROM node:10.0-alpine
+
+WORKDIR /app
 EXPOSE 3000
 
-CMD [ "node", "/app/build/server.js" ]
+ENV NODE_ENV=production
+
+COPY --from=builder /app/build/server.js /app/
+COPY package.json /app/
+
+RUN yarn --prod
+
+CMD [ "node", "/app/server.js" ]
