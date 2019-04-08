@@ -1,8 +1,15 @@
 import { sequelize } from 'helpers/db'
-// import to set models
-import Tools from './tools'
+// import seeds
+import toolsSeeds from './tools/seeds'
+
 
 // Update models
 export default () => {
   sequelize.sync()
+}
+
+
+// Seed function
+export const seed = () => {
+  toolsSeeds()
 }
