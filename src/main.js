@@ -1,5 +1,6 @@
 import express from 'express'
-import Server from './helpers/server'
+import Server from 'helpers/server'
+import setupDatabase from 'models'
 
 const main = () => {
     // Create app
@@ -11,6 +12,7 @@ const main = () => {
       host: process.env.HOST || '0.0.0.0',
     }
     const server = new Server(app, options)
+    setupDatabase()
     server.run()
 }
 
