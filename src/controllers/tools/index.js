@@ -11,7 +11,16 @@ router.route(ENDPOINT)
 
   .get(async (req, res) => {
     const result = await Tools.list()
-    res.json(result)
+    const jsonResult = result
+      .map(tool => tool.toJSON())
+      // Map tag obbject to item
+      .map(tool => ({
+        ...tool,
+        tags: tool.tags
+          .map(tag => tag.name)
+      }))
+    console.log(jsonResult)
+    res.json(jsonResult)
   })
 
   .post(async (req, res) => {
