@@ -4,5 +4,5 @@ import Tools from './tools'
 
 // Update models
 export default () => {
-  sequelize.sync({ force: true })
+  sequelize.sync()
 }
