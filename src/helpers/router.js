@@ -1,6 +1,7 @@
+import * as root from '../controllers/root'
 import * as docs from '../controllers/docs'
 import * as ping from '../controllers/ping'
-import * as root from '../controllers/root'
+import * as tools from '../controllers/tools'
 
 
 export default class Router {
@@ -8,9 +9,10 @@ export default class Router {
     this._app = app
     // get all routes
     this._routes = [
+      root,
       docs,
       ping,
-      root,
+      tools,
     ]
   }
 
