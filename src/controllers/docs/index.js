@@ -3,6 +3,8 @@ import path from 'path'
 import swaggerJSDoc from 'swagger-jsdoc'
 import swaggerUi from 'swagger-ui-express'
 
+import filepaths from 'filepaths'
+
 
 const ENDPOINT = '/docs'
 
@@ -18,7 +20,7 @@ const swaggerSpec = swaggerJSDoc({
   },
   // Path to the API docs
   apis: [
-    path.join(__dirname, '../src/controllers/**/*.yml')
+    filepaths.server.docs,
   ],
 })
 
