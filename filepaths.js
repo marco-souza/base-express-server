@@ -7,8 +7,6 @@ export default {
     root: __dirname,
     server: {
       entry: relativePath("src/main.js"),
-      database: {
-        path: process.env.DB_PATH || relativePath("database.sqlite"),
-      },
+      sqlite_path: process.env.DB_PATH || relativePath("database.sqlite"),
     },
 }
