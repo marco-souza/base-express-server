@@ -42,6 +42,8 @@
     "watch": [
       "src/*",
       ".babelrc",
+      "filepaths.js",
+      "package.json",
       "rollup.config.js"
     ],
     "ext": "js,json,yml"
