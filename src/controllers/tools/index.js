@@ -12,7 +12,7 @@ router.route(ENDPOINT)
     const result = await Tools.list()
     const jsonResult = result
       .map(tool => tool.toJSON())
-      // Map tag object to item
+      // Map tag object to item value
       .map(tool => ({
         ...tool,
         tags: tool.tags
@@ -23,6 +23,8 @@ router.route(ENDPOINT)
 
   .post(async (req, res) => {
     const result = await Tools.create(req.body)
-    res.status(201)
-      .json({ status: 'success', id: result.id })
+    res.status(201).json({
+      status: 'success',
+      id: result.id,
+    })
   })
