@@ -18,7 +18,7 @@ const swaggerSpec = swaggerJSDoc({
   },
   // Path to the API docs
   apis: [
-    path.join(__dirname, '../src/controllers/*.js')
+    path.join(__dirname, '../src/controllers/**/*.yml')
   ],
 })
 
