@@ -48,7 +48,7 @@ export default {
 
   list: (where = {}) => Tool.findAll({
     where,
-    attributes: [ 'title', 'description', 'link' ],
+    attributes: [ 'id', 'title', 'description', 'link' ],
     include:[{
       association: Tool.Tags,
       attributes: [ 'name' ]
