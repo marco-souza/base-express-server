@@ -1,13 +1,12 @@
-# @swagger
 /tools:
   get:
     tags:
       - Tools
-    description: List all tools
+    summary: List all tools
+    description: List all tools saved in database.
     responses:
       200:
-        description: "`{ data: result }`"
-        message: pong
+        description: Tools listed with tags.
   post:
     tags:
       - Tools
@@ -28,5 +27,5 @@
               link: https://reactjs.js.org
               tags: [ 'react' ]
     responses:
-      '201':
-        description: Created
+      200:
+        description: Create tool register in datababse.
