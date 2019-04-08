@@ -1,6 +1,5 @@
 import express from 'express'
 import Tools from 'models/tools'
-import { extractKey } from 'helpers/maps'
 
 const ENDPOINT = '/tools'
 

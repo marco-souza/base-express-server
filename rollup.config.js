@@ -15,6 +15,8 @@ export default {
   external: [
     'path',
     'express',
+    'sequelize',
+    'body-parser',
     'swagger-jsdoc',
     'swagger-ui-express',
   ],
