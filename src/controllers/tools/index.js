@@ -12,7 +12,7 @@ router.route(ENDPOINT)
     const result = await Tools.list()
     const jsonResult = result
       .map(tool => tool.toJSON())
-      // Map tag obbject to item
+      // Map tag object to item
       .map(tool => ({
         ...tool,
         tags: tool.tags
