@@ -1,0 +1,32 @@
+# @swagger
+/tools:
+  get:
+    tags:
+      - Tools
+    description: List all tools
+    responses:
+      200:
+        description: "`{ data: result }`"
+        message: pong
+  post:
+    tags:
+      - Tools
+    summary: Add a new tool
+    requestBody:
+      description: Optional description in *Markdown*
+      required: true
+      content:
+        application/json:
+          schema:      # Request body contents
+            title: object
+            link: array
+            description: array
+            tags: array
+            example:
+              title: react
+              description: Frontend framework for View
+              link: https://reactjs.js.org
+              tags: [ 'react' ]
+    responses:
+      '201':
+        description: Created
