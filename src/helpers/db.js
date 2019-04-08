@@ -2,9 +2,7 @@ import Sequelize from 'sequelize'
 import paths from 'filepaths'
 
 
-// Setup connection
-const connectionConfig = {
-  dialect: 'sqlite',
-  storage: paths.server.sqlite_path,
-}
-export const sequelize = new Sequelize(connectionConfig)
+export const sequelize = new Sequelize(
+  `sqlite://${paths.server.sqlite_path}`,
+  // { define: { raw: true } }
+)
