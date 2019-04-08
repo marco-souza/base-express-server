@@ -18,7 +18,6 @@ router.route(ENDPOINT)
         tags: tool.tags
           .map(tag => tag.name)
       }))
-    console.log(jsonResult)
     res.json(jsonResult)
   })
 
