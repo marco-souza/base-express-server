@@ -23,10 +23,6 @@ router.route(ENDPOINT)
     res.json(jsonResult)
   })
 
-  .post(async (req, res) => {
-    const result = await Tools.create(req.body)
-    res.status(201).json({
-      status: 'success',
-      id: result.id,
-    })
-  })
+  .post(async (req, res) => res.status(201)
+    .json(await Tools.create(req.body))
+  )

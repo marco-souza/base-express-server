@@ -4,13 +4,26 @@ import { Tool } from 'models/tools/schemas'
 
 // CRUD
 export default {
-  create: ({ title, link, description, tags }) => {
+  create: async ({ title, link, description, tags }) => {
     console.assert(typeof title === 'string')
     console.assert(typeof link === 'string')
     console.assert(typeof description === 'string')
     console.assert(tags instanceof Array)
 
-    return Tool.create(
+
+    const attribs = ['id', 'title', 'description', 'link', 'tags']
+    const mapTags = tags => tags.map(item => item.name)
+    const filterObject = object => Object.keys(object)
+      .filter(item => attribs.includes(item))
+      .reduce((acc, cur) => ({
+        ...acc,
+        [cur]: (cur === 'tags')
+          ? mapTags(result.tags)
+          : result[cur]
+      }), {})
+
+
+    const result = await Tool.create(
       { title,
         link,
         description,
@@ -18,6 +31,7 @@ export default {
       },
       { include: [Tool.Tags] }
     )
+    return filterObject(result.toJSON())
   },
 
   list: async ({ tag } = {}) => {
