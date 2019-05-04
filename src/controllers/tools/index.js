@@ -9,7 +9,9 @@ export const router = express.Router()
 router.route(ENDPOINT)
 
   .get(async (req, res) => {
-    const result = await Tools.list()
+    const result = await Tools.list({
+      tag: req.query.tag
+    })
     const jsonResult = result
       .map(tool => tool.toJSON())
       // Map tag object to item value

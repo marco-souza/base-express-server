@@ -20,15 +20,45 @@ export default {
     )
   },
 
-  list: (where = {}) =>
-    Tool.findAll({
-      where,
-      attributes: [ 'id', 'title', 'description', 'link' ],
+  list: async ({ tag } = {}) => {
+    // [WORKARROUND] Sequelize problem
+    // Sequelize has problem to filter results by its assosiations.
+    // Refs: https://github.com/sequelize/sequelize/issues/8754
+    //
+    // To solve that, I make a query to gel all ToolIDs and then
+    // I get all assosiations
+    // if we received a tag.
+    const onlyID = ['id']
+    const attributes = ['id', 'title', 'description', 'link']
+    const includeTags = {
+      association: Tool.Tags,
+      attributes: ['name'],
+    }
+
+    const results = Tool.findAll({
+      attributes: tag
+        ? onlyID
+        : attributes,
       include: [{
-        association: Tool.Tags,
-        attributes: [ 'name' ],
+        ...includeTags,
+        where: tag
+          ? { name: tag }
+          : undefined,
       }]
-    }),
+    })
+
+    // Return results
+    return !tag
+      ? results
+      : Tool.findAll({
+        where: { id: (await results)
+          .map(item => item.toJSON())
+          .map(item => item.id)
+        },
+        include: [includeTags],
+        attributes,
+      })
+  },
 
   update: () => {},
   delete: () => {},
