@@ -4,6 +4,13 @@
       - Tools
     summary: List all tools
     description: List all tools saved in database.
+    parameters:
+      - in: query
+        name: tag
+        schema:
+          type: string
+        required: false
+        description: Filter results by tag
     responses:
       200:
         description: Tools listed with tags.
