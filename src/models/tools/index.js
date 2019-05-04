@@ -74,6 +74,12 @@ export default {
       })
   },
 
-  update: () => {},
-  delete: () => {},
+  delete: async (toolID) => {
+    const toDelete = await Tool.findOne({
+      where: { id: toolID },
+    })
+    console.log(`item to be deleted: ${toDelete.toJSON()}`);
+    toDelete.destroy()
+    return {}
+  },
 }

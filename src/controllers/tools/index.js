@@ -5,9 +5,8 @@ const ENDPOINT = '/tools'
 
 export const router = express.Router()
 
-// GET tools
 router.route(ENDPOINT)
-
+  // GET tools
   .get(async (req, res) => {
     const result = await Tools.list({
       tag: req.query.tag
@@ -23,6 +22,20 @@ router.route(ENDPOINT)
     res.json(jsonResult)
   })
 
+  // POST tools
   .post(async (req, res) => res.status(201)
     .json(await Tools.create(req.body))
   )
+
+
+router.route(`${ENDPOINT}/:id`)
+  // DELETE
+  .delete(async (req, res) => {
+    try {
+      res.json(await Tools.delete(req.params.id))
+    } catch (error) {
+      res.status(404).json({
+        error: 'Tool ID not found'
+      })
+    }
+  })

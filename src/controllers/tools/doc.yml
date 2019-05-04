@@ -36,3 +36,21 @@
     responses:
       200:
         description: Create tool register in datababse.
+
+/tools/{id}:
+  delete:
+    tags:
+      - Tools
+    summary: Remove a tool by id
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: number
+        required: true
+        description: Tool ID to delete
+    responses:
+      200:
+        description: Tool was deleted.
+      404:
+        description: ID not found.
