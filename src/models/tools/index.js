@@ -74,6 +74,23 @@ export default {
       })
   },
 
+  listBy: async (key, value) => {
+    const attributes = ['id', 'title', 'description', 'link']
+    const include = {
+      association: Tool.Tags,
+      attributes: ['name'],
+    }
+    const results = Tool.findOne({
+      attributes,
+      where: {
+        [key]: value,
+      },
+      include,
+    })
+
+    return results
+  },
+
   delete: async (toolID) => {
     const toDelete = await Tool.findOne({
       where: { id: toolID },
