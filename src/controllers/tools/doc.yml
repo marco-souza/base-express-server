@@ -54,3 +54,20 @@
         description: Tool was deleted.
       404:
         description: ID not found.
+
+  get:
+    tags:
+      - Tools
+    summary: List individual Tool
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: number
+        required: true
+        description: Tool ID to show
+    responses:
+      200:
+        description: Tool data.
+      404:
+        description: ID not found.

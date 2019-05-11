@@ -5,6 +5,11 @@ const ENDPOINT = '/tools'
 
 export const router = express.Router()
 
+const parseToolTags = tool => ({
+    ...tool,
+    tags: tool.tags.map(tag => tag.name)
+})
+
 router.route(ENDPOINT)
   // GET tools
   .get(async (req, res) => {
@@ -14,11 +19,7 @@ router.route(ENDPOINT)
     const jsonResult = result
       .map(tool => tool.toJSON())
       // Map tag object to item value
-      .map(tool => ({
-        ...tool,
-        tags: tool.tags
-          .map(tag => tag.name)
-      }))
+      .map(parseToolTags)
     res.json(jsonResult)
   })
 
@@ -29,7 +30,7 @@ router.route(ENDPOINT)
 
 
 router.route(`${ENDPOINT}/:id`)
-  // DELETE
+  // DELETE tool
   .delete(async (req, res) => {
     try {
       res.json(await Tools.delete(req.params.id))
@@ -38,4 +39,14 @@ router.route(`${ENDPOINT}/:id`)
         error: 'Tool ID not found'
       })
     }
+  })
+
+  // GET tool
+  .get(async (req, res) => {
+    const result = await Tools.listBy('id', req.params.id)
+
+    res.status(result ? 200 : 404).json(
+      parseToolTags(result.toJSON())
+      || { error: 'Tool ID not found' }
+    )
   })
