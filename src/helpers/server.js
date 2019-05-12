@@ -1,6 +1,7 @@
 import express from 'express'
 import passport from 'passport'
 import bodyParser from 'body-parser'
+import { Strategy as BearerStrategy } from 'passport-http-bearer'
 
 import setupDatabase from 'models'
 import Router from 'helpers/router'
@@ -24,7 +25,7 @@ export default class Server {
     }))
     this._app.use(bodyParser.json())
     this._app.use(passport.initialize())
-    this._app.use(passport.session())
+    // this._app.use(passport.session())
 
     // define routers
     this._router = new Router(this._app)
@@ -32,10 +33,18 @@ export default class Server {
 
     // Setup models
     setupDatabase()
+
+    // Setup auth strategy
+    passport.use(new BearerStrategy(this._tokenAuth))
   }
 
   _startCallback = () => {
     console.log(`Server is listening in http://${this._host}:${this._port}`)
+  }
+
+  _tokenAuth = (token, done) => {
+    console.log('token', token)
+    return done(new Error())
   }
 
   run = () => {
