@@ -1,13 +1,12 @@
 # TODO
 
-- [ ] **controllers**
-  - [ ] query params tags to search tools
-  - [ ] see one tool
-  - [ ] delete tool
-- [ ] **rotas**
-  - [ ] pensar estrutura de rotas
-    - [ ] adicionar sub-rotas
-    - [ ] aplicar middlewares em uma rota
-    - [ ] custom 404
-- [x] criar **models**
-- [ ] add eslint
+- [x] **controllers**
+  - [x] query params tags to search tools
+  - [x] see one tool
+  - [x] delete tool
+- [ ] Security
+  - [ ] JWT service
+    - [ ] Add redis
+- [ ] Create docker compose
+- [ ] Test APIs
+- [x] add eslint
