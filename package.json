@@ -9,10 +9,9 @@
     "start:dev": "NODE_ENV=development yarn nodemon --exec rollup -c rollup.config.js --silent",
     "start:prod": "yarn nodemon --exec 'yarn build && ./build/server'",
     "build": "NODE_ENV=production rollup -c rollup.config.js",
-    "dk:s": "docker-compose -f dev.docker-compose.yml up",
-    "dk:sp": "docker-compose -f prod.docker-compose.yml up --build",
-    "lint": "yarn eslint . --fix",
-    "s": "yarn dk:s"
+    "s": "docker-compose -f dev.docker-compose.yml up",
+    "sp": "docker-compose -f prod.docker-compose.yml up --build",
+    "lint": "yarn eslint . --fix"
   },
   "dependencies": {
     "body-parser": "^1.18.3",

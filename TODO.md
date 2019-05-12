@@ -7,6 +7,7 @@
 - [ ] Security
   - [ ] JWT service
     - [ ] Add redis
-- [ ] Create docker compose
+- [x] Create docker compose
 - [ ] Test APIs
 - [x] add eslint
+- [ ] Update readme with usage
