@@ -1,8 +1,8 @@
 version: '3.7'
 services:
-  api:
+  api_prod:
     build:
       dockerfile: prod.dockerfile
       context: .
     ports:
-      - 3000:3000
+      - 3001:3000

@@ -9,9 +9,10 @@
     "start:dev": "NODE_ENV=development yarn nodemon --exec rollup -c rollup.config.js --silent",
     "start:prod": "yarn nodemon --exec 'yarn build && ./build/server'",
     "build": "NODE_ENV=production rollup -c rollup.config.js",
+    "dk:s": "docker-compose -f dev.docker-compose.yml up",
+    "dk:sp": "docker-compose -f prod.docker-compose.yml up --build",
     "lint": "yarn eslint . --fix",
-    "docker:build": "docker build -t $(basename $PWD) .",
-    "docker:run": "docker run -it -p 3000:3000 $(basename $PWD):latest"
+    "s": "yarn dk:s"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
