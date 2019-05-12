@@ -7,5 +7,5 @@ import * as tools from 'controllers/tools'
 export default [
   docs,
   ping,
-  tools,
+  tools
 ]

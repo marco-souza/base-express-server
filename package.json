@@ -6,9 +6,10 @@
   "license": "(ISC OR GPL-3.0)",
   "scripts": {
     "start": "yarn start:dev",
-    "start:dev": "NODE_ENV=development npx nodemon --exec rollup -c rollup.config.js --silent",
-    "start:prod": "npx nodemon --exec 'yarn build && ./build/server'",
+    "start:dev": "NODE_ENV=development yarn nodemon --exec rollup -c rollup.config.js --silent",
+    "start:prod": "yarn nodemon --exec 'yarn build && ./build/server'",
     "build": "NODE_ENV=production rollup -c rollup.config.js",
+    "lint": "yarn eslint . --fix",
     "docker:build": "docker build -t $(basename $PWD) .",
     "docker:run": "docker run -it -p 3000:3000 $(basename $PWD):latest"
   },
@@ -30,13 +31,15 @@
     "eslint-plugin-node": "^9.0.1",
     "eslint-plugin-promise": "^4.1.1",
     "eslint-plugin-standard": "^4.0.0",
+    "nodemon": "^1.19.0",
     "rollup": "^1.9.0",
     "rollup-plugin-babel": "^4.3.2",
     "rollup-plugin-babel-minify": "^8.0.0",
     "rollup-plugin-commonjs": "^9.3.4",
     "rollup-plugin-json": "^4.0.0",
     "rollup-plugin-run": "^1.1.0",
-    "rollup-plugin-uglify": "^6.0.2"
+    "rollup-plugin-uglify": "^6.0.2",
+    "standard": "^12.0.1"
   },
   "nodemonConfig": {
     "restartable": "r",

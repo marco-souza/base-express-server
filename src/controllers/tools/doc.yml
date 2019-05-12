@@ -35,7 +35,7 @@
               tags: [ 'react' ]
     responses:
       200:
-        description: Create tool register in datababse.
+        description: Create tool register in database.
 
 /tools/{id}:
   delete:

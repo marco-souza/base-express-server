@@ -1,7 +1,6 @@
 import { mapToKey } from 'helpers/maps'
 import { Tool } from 'models/tools/schemas'
 
-
 // CRUD
 export default {
   create: async ({ title, link, description, tags }) => {
@@ -9,7 +8,6 @@ export default {
     console.assert(typeof link === 'string')
     console.assert(typeof description === 'string')
     console.assert(tags instanceof Array)
-
 
     const attribs = ['id', 'title', 'description', 'link', 'tags']
     const mapTags = tags => tags.map(item => item.name)
@@ -22,12 +20,11 @@ export default {
           : result[cur]
       }), {})
 
-
     const result = await Tool.create(
       { title,
         link,
         description,
-        tags: tags.map(mapToKey('name')),
+        tags: tags.map(mapToKey('name'))
       },
       { include: [Tool.Tags] }
     )
@@ -46,7 +43,7 @@ export default {
     const attributes = ['id', 'title', 'description', 'link']
     const includeTags = {
       association: Tool.Tags,
-      attributes: ['name'],
+      attributes: ['name']
     }
 
     const results = Tool.findAll({
@@ -57,7 +54,7 @@ export default {
         ...includeTags,
         where: tag
           ? { name: tag }
-          : undefined,
+          : undefined
       }]
     })
 
@@ -70,7 +67,7 @@ export default {
           .map(item => item.id)
         },
         include: [includeTags],
-        attributes,
+        attributes
       })
   },
 
@@ -78,14 +75,14 @@ export default {
     const attributes = ['id', 'title', 'description', 'link']
     const include = {
       association: Tool.Tags,
-      attributes: ['name'],
+      attributes: ['name']
     }
     const results = Tool.findOne({
       attributes,
       where: {
-        [key]: value,
+        [key]: value
       },
-      include,
+      include
     })
 
     return results
@@ -93,10 +90,10 @@ export default {
 
   delete: async (toolID) => {
     const toDelete = await Tool.findOne({
-      where: { id: toolID },
+      where: { id: toolID }
     })
-    console.log(`item to be deleted: ${toDelete.toJSON()}`);
+    console.log(`item to be deleted: ${toDelete.toJSON()}`)
     toDelete.destroy()
     return {}
-  },
+  }
 }

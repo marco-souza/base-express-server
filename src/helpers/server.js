@@ -1,9 +1,8 @@
 import Router from './router'
 import bodyParser from 'body-parser'
 
-
 export default class Server {
-  constructor(app, { port, host }) {
+  constructor (app, { port, host }) {
     this._app = app
     this._host = host
     this._port = port
@@ -26,7 +25,7 @@ export default class Server {
     this._app.listen(
       this._port,
       this._host,
-      this._startCallback,
+      this._startCallback
     )
   }
 }

@@ -1,6 +1,5 @@
 import Tools from 'models/tools'
 
-
 // Seed db
 export default async () => {
   // Check if table is empty
@@ -10,42 +9,42 @@ export default async () => {
   const listTools = [
     { title: 'NodeJS',
       description: 'Javascript v8 Engine server-side.',
-      link: "NodeJS",
+      link: 'NodeJS',
       tags: [
         'nodejs',
         'backend',
-        'javascript',
+        'javascript'
       ]
     },
     { title: 'React',
       description: 'Javascript view framework.',
-      link: "NodeJS",
+      link: 'NodeJS',
       tags: [
         'nodejs',
         'react',
         'frontend',
-        'javascript',
+        'javascript'
       ]
     },
     { title: 'Express',
       description: 'Javascript server lib.',
-      link: "NodeJS",
+      link: 'NodeJS',
       tags: [
         'nodejs',
         'server',
         'api',
-        'javascript',
+        'javascript'
       ]
     },
     { title: 'Rollup',
       description: 'Simple bundler tool.',
-      link: "NodeJS",
+      link: 'NodeJS',
       tags: [
         'nodejs',
         'frontend',
-        'javascript',
+        'javascript'
       ]
-    },
+    }
   ]
   listTools.map(tool => Tools.create(tool))
 }

@@ -2,7 +2,7 @@ import commonjs from 'rollup-plugin-commonjs'
 import babel from 'rollup-plugin-babel'
 import json from 'rollup-plugin-json'
 import run from 'rollup-plugin-run'
-import minify from "rollup-plugin-babel-minify";
+import minify from 'rollup-plugin-babel-minify'
 
 import paths from './filepaths.js'
 
@@ -12,7 +12,7 @@ export default {
   input: paths.server.entry,
   output: {
     file: 'build/server.js',
-    format: 'cjs',
+    format: 'cjs'
   },
   external: [
     'path',
@@ -20,13 +20,13 @@ export default {
     'sequelize',
     'body-parser',
     'swagger-jsdoc',
-    'swagger-ui-express',
+    'swagger-ui-express'
   ],
   plugins: [
     babel(),
     commonjs(),
     json(),
     dev && run(),
-    !dev && minify(),
+    !dev && minify()
   ]
 }
