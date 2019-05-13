@@ -1,10 +1,11 @@
 import express from 'express'
 import Tools from 'models/tools'
-
+import passport from 'passport'
 const ENDPOINT = '/tools'
 
 export const router = express.Router()
 
+const auth = passport.authenticate('bearer', { session: false })
 const parseToolTags = tool => ({
   ...tool,
   tags: tool.tags.map(tag => tag.name)
@@ -12,7 +13,7 @@ const parseToolTags = tool => ({
 
 router.route(ENDPOINT)
   // GET tools
-  .get(async (req, res) => {
+  .get(auth, async (req, res) => {
     const result = await Tools.list({
       tag: req.query.tag
     })
@@ -24,13 +25,13 @@ router.route(ENDPOINT)
   })
 
   // POST tools
-  .post(async (req, res) => res.status(201)
+  .post(auth, async (req, res) => res.status(201)
     .json(await Tools.create(req.body))
   )
 
 router.route(`${ENDPOINT}/:id`)
   // DELETE tool
-  .delete(async (req, res) => {
+  .delete(auth, async (req, res) => {
     try {
       res.json(await Tools.delete(req.params.id))
     } catch (error) {
@@ -41,7 +42,7 @@ router.route(`${ENDPOINT}/:id`)
   })
 
   // GET tool
-  .get(async (req, res) => {
+  .get(auth, async (req, res) => {
     const result = await Tools.listBy('id', req.params.id)
 
     res.status(result ? 200 : 404).json(

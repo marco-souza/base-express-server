@@ -43,8 +43,11 @@ export default class Server {
   }
 
   _tokenAuth = (token, done) => {
-    console.log('token', token)
-    return done(new Error())
+    const isValid = (token === 'asd123')
+
+    return isValid
+      ? done(null, true)
+      : done(new Error())
   }
 
   run = () => {
