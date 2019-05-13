@@ -1,0 +1,9 @@
+/auth:
+  get:
+    tags:
+      - Auth
+    summary: Get authentication token
+    description: Create a new session with user key.
+    responses:
+      200:
+        description: Authentication key.

@@ -8,7 +8,8 @@ router.route(ENDPOINT)
   // GET access token
   .get(
     (req, res) => {
-      console.log('olokinho')
-      res.send('use any token')
+      res.json({
+        token: 'asd123'
+      })
     }
   )
